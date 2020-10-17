@@ -1,0 +1,18 @@
+plugins {
+    id 'java'
+}
+
+apply plugin: 'java'
+
+group 'Tests'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'io.cucumber', name: 'cucumber-java', version: '6.8.1'
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
+    testCompile group: 'io.rest-assured', name: 'rest-assured', version: '4.3.1'
+}
