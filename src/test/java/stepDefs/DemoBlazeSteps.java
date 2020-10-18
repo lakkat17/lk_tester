@@ -5,6 +5,8 @@ import PageObjects.HomePage;
 
 import PageObjects.ProductPage;
 import io.cucumber.datatable.DataTable;
+
+import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -13,8 +15,6 @@ import managers.BrowserManager;
 import managers.POManager;
 import managers.WebDriverManager;
 import org.openqa.selenium.WebDriver;
-
-import java.net.URL;
 
 public class DemoBlazeSteps {
 
@@ -27,8 +27,8 @@ public class DemoBlazeSteps {
     CartPage cartPage;
     String[] orderDetails;
 
-    @Given("^user is on Home Page$")
-    public void navigate_to_HomePage() {
+    @Before("@web")
+    public void initialize() {
         //loading drivers
         webDriverManager = new WebDriverManager();
         driver = webDriverManager.getDriver();
@@ -39,6 +39,14 @@ public class DemoBlazeSteps {
         poManager = new POManager(driver);
         homePage = poManager.getHomePage();
 
+      /*  shut down driver when the test suite exits.
+         This shutdown hook will be run by JVM at shutdown time*/
+        Runtime.getRuntime().addShutdownHook(new Thread(() ->
+                webDriverManager.closeDriver()));
+    }
+
+    @Given("^user is on Home Page$")
+    public void navigate_to_HomePage() {
         homePage.getPage(browserManager.getAppUrl());
     }
 
@@ -78,6 +86,7 @@ public class DemoBlazeSteps {
     @Then("^verify (\\d+) as purchase amount$")
     public void verifyPurchaseAmount(int amt) {
         assert Integer.parseInt(orderDetails[1].split(" ")[1]) == amt;
+
     }
 
 }

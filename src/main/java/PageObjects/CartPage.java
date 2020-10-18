@@ -110,6 +110,7 @@ public class CartPage {
         cardTxtBox.sendKeys(fields.get(3));
         monthTxtBox.sendKeys(fields.get(4));
         yearTxtBox.sendKeys(fields.get(5));
+        logger.info("All form fields have been filled.");
     }
 
     public String[] logPurchaseInfo() {

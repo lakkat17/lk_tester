@@ -13,6 +13,12 @@ repositories {
 
 dependencies {
     compile group: 'io.cucumber', name: 'cucumber-java', version: '6.8.1'
+    testCompile group: 'io.cucumber', name: 'cucumber-junit', version: '6.8.1'
     compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
     testCompile group: 'io.rest-assured', name: 'rest-assured', version: '4.3.1'
+}
+
+test{
+    //gradle reporting
+    reports.html.setDestination(file("$projectDir/target/GradleReport"))
 }

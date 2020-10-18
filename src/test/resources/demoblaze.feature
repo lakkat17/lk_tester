@@ -1,9 +1,10 @@
 Feature: Web Automation for Demo Online shop called demoblaze.com
-  # https://www.demoblaze.com/index.html
+  Description: This contains End to End scenario for placing an order on https://www.demoblaze.com/index.html
 
   Background: Navigating to Home Page
     Given user is on Home Page
 
+  @web
   Scenario: Verify laptops purchase on demoblaze
     When user navigates to Laptops under categories
     And user navigates to Sony vaio i5 product
