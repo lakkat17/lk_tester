@@ -33,7 +33,7 @@ public class WebDriverManager {
             case FIREFOX:
                 System.setProperty("webdriver.gecko.driver", "../lk_tester/src/main/resources/drivers/geckodriver.exe");
                 System.setProperty(FirefoxDriver.SystemProperty.DRIVER_USE_MARIONETTE, "true");
-                System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE, "C:\\temp\\logs.txt");
+                System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE, "C:/temp/logs.txt");
 
                 FirefoxOptions options = new FirefoxOptions();
                 return driver = new FirefoxDriver(options);
